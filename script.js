@@ -1,22 +1,19 @@
-function add(a, b) {
-  return a + b;
+function add(operand1, operand2) {
+  return operand1 + operand2;
 }
 
 
-function subtract(a, b) {
-  return a - b;
+function subtract(operand1, operand2) {
+  return operand1 - operand2;
 }
 
 
-function multiply(a, b) {
-  return a * b;
+function multiply(operand1, operand2) {
+  return operand1 * operand2;
 }
 
-function divide(a, b) {
-  return a / b;
+function divide(operand1, operand2) {
+  return operand1 / operand2;
 }
 
-console.log(add(15, 5));
-console.log(subtract(15, 5));
-console.log(multiply(15, 5));
-console.log(divide(15, 5));
+let operand1, operator, operand2;
