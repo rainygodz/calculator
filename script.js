@@ -17,3 +17,21 @@ function divide(operand1, operand2) {
 }
 
 let operand1, operator, operand2;
+
+function operate(operator, operand1, operand2) {
+  switch (operator) {
+    case '+':
+      return add(operand1, operand2);
+    case '-':
+      return subtract(operand1, operand2);
+    case '*':
+      return multiply(operand1, operand2);
+    case '/':
+      return divide(operand1, operand2);
+  }
+}
+
+console.log(operate('+', 15, 5));
+console.log(operate('-', 15, 5));
+console.log(operate('*', 15, 5));
+console.log(operate('/', 15, 5));
