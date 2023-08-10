@@ -37,10 +37,8 @@ html {
   border-radius: 5px;
   width: 55px;
   height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: default;
+  color: rgb(255, 255, 255);
 
 
   transition: background-color 0.2s linear;
