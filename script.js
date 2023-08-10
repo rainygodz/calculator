@@ -31,7 +31,21 @@ function operate(operator, operand1, operand2) {
   }
 }
 
-console.log(operate('+', 15, 5));
-console.log(operate('-', 15, 5));
-console.log(operate('*', 15, 5));
-console.log(operate('/', 15, 5));
+
+function updateDisplay(event) {
+  if (event.target.id === "C") {
+    return;
+  }
+  display.textContent += event.target.id;
+}
+
+
+const display = document.querySelector(".display-content");
+const buttons = document.querySelectorAll(".button");
+
+buttons.forEach(button => {
+  button.addEventListener("click", updateDisplay);
+});
+
+const realButton = document.querySelector("button");
+realButton.addEventListener("click", updateDisplay);
