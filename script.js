@@ -60,19 +60,23 @@ function updateDisplay(event) {
 }
 
 
-function storeVariables() {
+function evaluate() {
   const expression = display.textContent;
   const expressionParts = expression.split(" ");
-  operand1 = parseInt(expressionParts[0]);
-  operator = expressionParts[1];
-  operand2 = parseInt(expressionParts[2]);
-}
+  let result = 0;
 
+  do {
+    operand1 = parseInt(expressionParts[0]);
+    operator = expressionParts[1];
+    operand2 = parseInt(expressionParts[2]);
+    expressionParts.shift();
+    expressionParts.shift();
+    expressionParts.shift();
+    result = operate(operator, operand1, operand2);
+    expressionParts.unshift(result);
+  } while (expressionParts.length !== 1);
 
-function evaluate() {
-  storeVariables();
-  const result = operate(operator, operand1, operand2);
-  display.textContent = result;
+  display.textContent = Math.round(result * 1000) / 1000;
 }
 
 
