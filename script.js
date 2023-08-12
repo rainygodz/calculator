@@ -46,28 +46,49 @@ function updateDisplay(event) {
 
   switch(event.target.id) {
     case "add":
-      display.textContent += " + ";
+      if (canInsertSign) {
+        display.textContent += " + ";
+        canInsertSign = false;
+      }
       break;
     case "subtract":
-      display.textContent += " - ";
+      if (canInsertSign) {
+        display.textContent += " - ";
+        canInsertSign = false;
+      }
       break;
     case "multiply":
-      display.textContent += " × ";
+      if (canInsertSign) {
+        display.textContent += " × ";
+        canInsertSign = false;
+      }
       break;
     case "divide":
-      display.textContent += " ÷ ";
+      if (canInsertSign) {
+        display.textContent += " ÷ ";
+        canInsertSign = false;
+      }
       break;
     case "equals":
       display.textContent += "";
+      canInsertSign = true;
       break;
     case "C":
       display.textContent += "";
       break;
     case "backspace":
       display.textContent += "";
+      canInsertSign = true;
+      break;
+    case "decimal":
+      if (canInsertSign) {
+        display.textContent += ".";
+        canInsertSign = false;
+      }
       break;
     default:
       display.textContent += event.target.id;
+      canInsertSign = true;
       break;
   }
 }
@@ -79,9 +100,9 @@ function evaluate() {
   let result = 0;
 
   do {
-    operand1 = parseInt(expressionParts[0]);
+    operand1 = parseFloat(expressionParts[0]);
     operator = expressionParts[1];
-    operand2 = parseInt(expressionParts[2]);
+    operand2 = parseFloat(expressionParts[2]);
     expressionParts.shift();
     expressionParts.shift();
     expressionParts.shift();
@@ -111,6 +132,8 @@ const display = document.querySelector(".display-content");
 const buttons = document.querySelectorAll(".button");
 const clearButton = document.querySelector("#C");
 const backspaceButton = document.querySelector("#backspace");
+const decimalButton = document.querySelector("#decimal");
+let canInsertSign = false;
 let displayContent = "";
 
 buttons.forEach(button => {
