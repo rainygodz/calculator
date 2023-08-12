@@ -75,6 +75,7 @@ function updateDisplay(event) {
       break;
     case "C":
       display.textContent += "";
+      canInsertSign = false;
       break;
     case "backspace":
       display.textContent += "";
