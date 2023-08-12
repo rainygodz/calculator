@@ -63,6 +63,9 @@ function updateDisplay(event) {
     case "C":
       display.textContent += "";
       break;
+    case "backspace":
+      display.textContent += "";
+      break;
     default:
       display.textContent += event.target.id;
       break;
@@ -98,9 +101,16 @@ function clear() {
 }
 
 
+function backspace() {
+  const displayContent = display.textContent;
+  display.textContent = displayContent.slice(0, displayContent.length - 1);
+}
+
+
 const display = document.querySelector(".display-content");
 const buttons = document.querySelectorAll(".button");
 const clearButton = document.querySelector("#C");
+const backspaceButton = document.querySelector("#backspace");
 let displayContent = "";
 
 buttons.forEach(button => {
@@ -115,3 +125,4 @@ const equalsButton = document.querySelector("#equals");
 
 equalsButton.addEventListener("click", evaluate);
 clearButton.addEventListener("click", clear);
+backspaceButton.addEventListener("click", backspace);
