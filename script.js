@@ -1,19 +1,22 @@
 function add(operand1, operand2) {
-  return operand1 + operand2;
+  return Math.round((operand1 + operand2) * 10000) / 10000;
 }
 
 
 function subtract(operand1, operand2) {
-  return operand1 - operand2;
+  return Math.round((operand1 - operand2) * 10000) / 10000;
 }
 
 
 function multiply(operand1, operand2) {
-  return operand1 * operand2;
+  return Math.round((operand1 * operand2) * 10000) / 10000;
 }
 
 function divide(operand1, operand2) {
-  return operand1 / operand2;
+  if (operand2 === 0) {
+    return "Error";
+  }
+  return Math.round((operand1 / operand2) * 10000) / 10000;
 }
 
 let operand1, operator, operand2;
@@ -25,16 +28,16 @@ function operate(operator, operand1, operand2) {
   if (isNaN(operand2)) {
     operand2 = 0;
   }
-  
+
   switch (operator) {
     case '+':
-      return Math.round(add(operand1, operand2) * 10000) / 10000;
+      return add(operand1, operand2);
     case '-':
-      return Math.round(subtract(operand1, operand2) * 10000) / 10000;
+      return subtract(operand1, operand2);
     case '×':
-      return Math.round(multiply(operand1, operand2) * 10000) / 10000;
+      return multiply(operand1, operand2);
     case '÷':
-      return Math.round(divide(operand1, operand2) * 10000) / 10000;
+      return divide(operand1, operand2);
   }
 }
 
