@@ -1,3 +1,15 @@
+const display = document.querySelector(".display-content");
+const buttons = document.querySelectorAll(".button");
+const clearButton = document.querySelector("#C");
+const backspaceButton = document.querySelector("#backspace");
+const decimalButton = document.querySelector("#decimal");
+const realButton = document.querySelector("button");
+const equalsButton = document.querySelector("#equals");
+let canInsertSign = false;
+let displayContent = "";
+let operand1, operator, operand2;
+
+
 function add(operand1, operand2) {
   return Math.round((operand1 + operand2) * 10000) / 10000;
 }
@@ -19,7 +31,6 @@ function divide(operand1, operand2) {
   return Math.round((operand1 / operand2) * 10000) / 10000;
 }
 
-let operand1, operator, operand2;
 
 function operate(operator, operand1, operand2) {
   if (isNaN(operand1)) {
@@ -129,24 +140,11 @@ function backspace() {
 }
 
 
-const display = document.querySelector(".display-content");
-const buttons = document.querySelectorAll(".button");
-const clearButton = document.querySelector("#C");
-const backspaceButton = document.querySelector("#backspace");
-const decimalButton = document.querySelector("#decimal");
-let canInsertSign = false;
-let displayContent = "";
-
 buttons.forEach(button => {
   button.addEventListener("click", updateDisplay);
 });
 
-const realButton = document.querySelector("button");
 realButton.addEventListener("click", updateDisplay);
-
-
-const equalsButton = document.querySelector("#equals");
-
 equalsButton.addEventListener("click", evaluate);
 clearButton.addEventListener("click", clear);
 backspaceButton.addEventListener("click", backspace);
