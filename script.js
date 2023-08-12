@@ -19,15 +19,22 @@ function divide(operand1, operand2) {
 let operand1, operator, operand2;
 
 function operate(operator, operand1, operand2) {
+  if (isNaN(operand1)) {
+    operand1 = 0;
+  }
+  if (isNaN(operand2)) {
+    operand2 = 0;
+  }
+  
   switch (operator) {
     case '+':
-      return add(operand1, operand2);
+      return Math.round(add(operand1, operand2) * 10000) / 10000;
     case '-':
-      return subtract(operand1, operand2);
+      return Math.round(subtract(operand1, operand2) * 10000) / 10000;
     case '×':
-      return multiply(operand1, operand2);
+      return Math.round(multiply(operand1, operand2) * 10000) / 10000;
     case '÷':
-      return divide(operand1, operand2);
+      return Math.round(divide(operand1, operand2) * 10000) / 10000;
   }
 }
 
@@ -76,12 +83,21 @@ function evaluate() {
     expressionParts.unshift(result);
   } while (expressionParts.length !== 1);
 
-  display.textContent = Math.round(result * 1000) / 1000;
+  display.textContent = result;
+}
+
+
+function clear() {
+  display.textContent = "";
+  operand1 = 0;
+  operand2 = 0;
+  operator = "";
 }
 
 
 const display = document.querySelector(".display-content");
 const buttons = document.querySelectorAll(".button");
+const clearButton = document.querySelector("#C");
 let displayContent = "";
 
 buttons.forEach(button => {
@@ -95,3 +111,4 @@ realButton.addEventListener("click", updateDisplay);
 const equalsButton = document.querySelector("#equals");
 
 equalsButton.addEventListener("click", evaluate);
+clearButton.addEventListener("click", clear);
